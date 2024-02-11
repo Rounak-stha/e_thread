@@ -1,3 +1,9 @@
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+
+export function cn(...inputs: ClassValue[]) {
+	return twMerge(clsx(inputs))
+}
 
 export function binaryToHex(data: Uint8Array) {
 	return Array.prototype.map
