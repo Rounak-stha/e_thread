@@ -112,7 +112,7 @@ export async function addToThread(id: string, hashValue: string, newData: { text
 		createdAt: date.toISOString()
 	})
 
-	// Should we generate new key or use the old one?
+	// Should we generate new key or use the old one ?
 
 	const [encoded] = await encodeThread(threadData, key)
 
