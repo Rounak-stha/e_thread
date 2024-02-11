@@ -10,6 +10,7 @@ import { Thread, decodeThread, revalidateThread } from '@/lib/thread'
 import ThreadForm from '@/components/ThreadForm'
 import Spinner from '@/components/Icons/Spinner'
 import { REVALIDATION_PERIOD } from '../constants'
+import { parseDate } from '@/lib/utils'
 
 export default function Thread() {
 	const [thread, setThread] = useState<Thread>([])
@@ -65,7 +66,7 @@ export default function Thread() {
 					<div className='grid gap-1.5'>
 						<div className='flex items-center gap-2'>
 							<div className='font-semibold'>{t.author}</div>
-							<div className='text-sm text-gray-500 dark:text-gray-400'>· 2h</div>
+							<div className='text-xs text-gray-500 dark:text-gray-400'>{parseDate(t.createdAt)}</div>
 						</div>
 						<div className='text-sm leading-loose text-gray-500 dark:text-gray-400'>
 							<p>{t.text}</p>

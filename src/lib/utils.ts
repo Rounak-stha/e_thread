@@ -5,6 +5,17 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
+export const parseDate = (dateStr: string) => {
+	const date = new Date(dateStr)
+	const day = date.getDate().toString().padStart(2, '0')
+	const month = (date.getMonth() + 1).toString().padStart(2, '0')
+	const hours = date.getHours()
+	const minutes = date.getMinutes()
+	const meridiem = hours > 12 ? 'PM' : 'AM'
+
+	return `${day}/${month} ${hours}:${minutes} ${meridiem}`
+}
+
 export function binaryToHex(data: Uint8Array) {
 	return Array.prototype.map
 		.call(data, function (byte) {
