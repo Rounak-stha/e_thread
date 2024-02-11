@@ -1,4 +1,4 @@
-This project is the response to the week 4 Algoriths Arena challenge.
+This project is the response to the week 4 Algorithm Arena challenge.
 
 The project is built with `Nextjs`. `Web Crypto API` is used for encryption and `Pako` library is used to data compression.
 
