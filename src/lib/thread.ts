@@ -10,7 +10,8 @@ import {
 	getSharableKey,
 	separateHashValue
 } from './utils'
-import { messages } from '@/app/constants'
+import { MAX_ENCODED_DATA_LENGTH, messages } from '@/app/constants'
+import { encode } from 'punycode'
 
 export type ThreadData = {
 	text: string
@@ -114,6 +115,8 @@ export async function addToThread(id: string, hashValue: string, newData: { text
 	// Should we generate new key or use the old one?
 
 	const [encoded] = await encodeThread(threadData, key)
+
+	if (encoded.length > MAX_ENCODED_DATA_LENGTH) throw new Error(messages.THREAD_LIMIT_REACHED)
 
 	const res = await fetch('/api/thread/update', {
 		method: 'POST',

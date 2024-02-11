@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 import Textarea from '@/components/Textarea'
 import UsernameDialog from '@/components/UsernameDialog'
 
 import useAuthor from '@/hooks/author'
-import { Thread, addToThread } from '@/lib/thread'
+import { addToThread } from '@/lib/thread'
 import useHash from '@/hooks/hash'
 import { MAX_POST_LENGTH, messages } from '@/app/constants'
 import UpdateContentDiaog from './UpdateContentDialog'
@@ -42,6 +42,12 @@ export default function ThreadForm({ id }: Props) {
 			.catch((e) => {
 				if (e.message === messages.OUTDATED_CONTENT) {
 					setOutdatedContent(true)
+				}
+				if (e.message === messages.THREAD_LIMIT_REACHED) {
+					alert('Thread Limit Reached')
+				} else {
+					console.log(e)
+					alert('An Error Occoured')
 				}
 			})
 			.finally(() => {
