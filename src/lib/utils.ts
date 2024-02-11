@@ -11,7 +11,7 @@ export const parseDate = (dateStr: string) => {
 	const month = (date.getMonth() + 1).toString().padStart(2, '0')
 	const hours = date.getHours() % 12
 	const minutes = date.getMinutes()
-	const meridiem = hours > 12 ? 'PM' : 'AM'
+	const meridiem = date.getHours() > 12 ? 'PM' : 'AM'
 
 	return `${day}/${month} ${hours}:${minutes} ${meridiem}`
 }
