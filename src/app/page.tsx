@@ -9,6 +9,7 @@ import { startThread } from '@/lib/thread'
 import Textarea from '@/components/Textarea'
 import useAuthor from '@/hooks/author'
 import Spinner from '@/components/Icons/Spinner'
+import { MAX_POST_LENGTH } from './constants'
 
 export default function Home() {
 	const [sending, setSending] = useState(false)
@@ -21,7 +22,7 @@ export default function Home() {
 			setShowNameModal(true)
 			return
 		}
-		if (!text) return
+		if (!text || text.length > MAX_POST_LENGTH) return
 
 		setSending(true)
 

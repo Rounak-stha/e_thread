@@ -8,7 +8,7 @@ import UsernameDialog from '@/components/UsernameDialog'
 import useAuthor from '@/hooks/author'
 import { Thread, addToThread } from '@/lib/thread'
 import useHash from '@/hooks/hash'
-import { messages } from '@/app/constants'
+import { MAX_POST_LENGTH, messages } from '@/app/constants'
 import UpdateContentDiaog from './UpdateContentDialog'
 import Spinner from './Icons/Spinner'
 
@@ -29,7 +29,7 @@ export default function ThreadForm({ id }: Props) {
 			setShowNameModal(true)
 			return
 		}
-		if (!text) return
+		if (!text || text.length > MAX_POST_LENGTH) return
 		if (!hash) {
 			return alert("You shouldn't be here")
 		}
