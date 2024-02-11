@@ -42,8 +42,7 @@ export default function ThreadForm({ id }: Props) {
 			.catch((e) => {
 				if (e.message === messages.OUTDATED_CONTENT) {
 					setOutdatedContent(true)
-				}
-				if (e.message === messages.THREAD_LIMIT_REACHED) {
+				} else if (e.message === messages.THREAD_LIMIT_REACHED) {
 					alert('Thread Limit Reached')
 				} else {
 					console.log(e)
